@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./reset.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
+
+    <script src="./script.js" defer></script>
+
+    <title>Recurse | TicTacToe</title>
+  </head>
+
+  <body>
+    <div class="modal__wrapper">
+      <div class="modal">
+        <p id="modal-text">Play Tic Tac Toe</p>
+        <button id="new-game" type="button">New Game</button>
+      </div>
+    </div>
+
+    <header>
+      <h1>Tic Tac Toe</h1>
+    </header>
+
+    <main>
+      <div id="gameboard">
+        <div class="row">
+          <div id="box0" class="box row--0 box--0 diag--0"></div>
+          <div id="box1" class="box row--0 box--1"></div>
+          <div id="box2" class="box row--0 box--2 diag--1"></div>
+        </div>
+        <div class="row">
+          <div id="box3" class="box row--1 box--0"></div>
+          <div id="box4" class="box row--1 box--1 diag--0 diag--1"></div>
+          <div id="box5" class="box row--1 box--2"></div>
+        </div>
+        <div class="row">
+          <div id="box6" class="box row--2 box--0 diag--1"></div>
+          <div id="box7" class="box row--2 box--1"></div>
+          <div id="box8" class="box row--2 box--2 diag--0"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
