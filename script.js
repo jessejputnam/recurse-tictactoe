@@ -26,6 +26,10 @@ let board, players, activePlayer;
 //* GAME PLAY LOGIC
 // #########################################################
 // Winning Conditions
+// const winRow = function (playerMark, rowNum) {
+//   return board[rowNum].every((square) => square === playerMark);
+// };
+
 const winRow0 = function (playerMark) {
   return board[0].every((square) => square === playerMark);
 };
@@ -35,6 +39,7 @@ const winRow1 = function (playerMark) {
 const winRow2 = function (playerMark) {
   return board[2].every((square) => square === playerMark);
 };
+
 const winCol0 = function (playerMark) {
   return (
     (board[0][0] === playerMark && board[1][0]) === playerMark &&
@@ -71,6 +76,9 @@ const winConditions = function (playerMark) {
   let winner = "none";
 
   // Horizontal
+  // for (let i = 0; i < 3; i++) {
+  //   if (winRow(playerMark, i)) winner = playerMark;
+  // }
   if (winRow0(playerMark)) winner = playerMark;
   if (winRow1(playerMark)) winner = playerMark;
   if (winRow2(playerMark)) winner = playerMark;
@@ -114,6 +122,13 @@ const newGame = function () {
   };
 
   activePlayer = players.playerX;
+};
+
+//
+const compChooseBox = function () {
+  const randomBoxRow = Math.floor(Math.random() * 3);
+  const randomBoxCol = Math.floor(Math.random() * 3);
+  return [randomBoxRow, randomBoxCol];
 };
 
 // #########################################################
@@ -202,12 +217,43 @@ boxes.forEach((box) => {
       return;
     }
 
-    const flatBoard = board.flat();
-    if (flatBoard.every((box) => box !== "")) {
+    if (board.flat().every((box) => box !== "")) {
       showModal("No one");
+      return;
     }
 
     // Change player turn
+    changePlayer();
+
+    // ################ Computer turn
+
+    // Call math.Random for all 9 squares
+    let compChoice = compChooseBox();
+
+    // if chosen random square is filled, math.random()
+    while (board[compChoice[0]][compChoice[1]] !== "") {
+      compChoice = compChooseBox();
+    }
+    // Add to player choices arr in object
+    activePlayer.input.push(compChoice);
+
+    // Add to board arr
+    board[compChoice[0]][compChoice[1]] = activePlayer.mark;
+
+    // update visual to include
+    updateUI();
+
+    // Check win conditions
+    const winner1 = winConditions(activePlayer.mark);
+
+    // Update visual to represent winning combo
+    winConditionVisual(activePlayer.mark);
+
+    if (winner1 !== "none") {
+      showModal(winner1);
+    }
+
+    // at the end, call changeplayer
     changePlayer();
   });
 });
