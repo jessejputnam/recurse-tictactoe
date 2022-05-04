@@ -1,7 +1,7 @@
 "use strict";
 
 // #########################################################
-// DOM VARIABLES
+//* DOM VARIABLES
 // #########################################################
 const rows = document.querySelectorAll(".row");
 const row0 = document.querySelectorAll(".row--0");
@@ -18,12 +18,12 @@ const modal = document.querySelector(".modal__wrapper");
 const btnStart = document.querySelector("#new-game");
 
 // #########################################################
-// BOARD AND PLAYER VARIABLES
+//* BOARD AND PLAYER VARIABLES
 // #########################################################
 let board, players, activePlayer;
 
 // #########################################################
-// GAME PLAY LOGIC
+//* GAME PLAY LOGIC
 // #########################################################
 // Winning Conditions
 const winRow0 = function (playerMark) {
@@ -117,7 +117,7 @@ const newGame = function () {
 };
 
 // #########################################################
-// VISUAL LOGIC
+//* VISUAL LOGIC
 // #########################################################
 const updateUI = function () {
   for (let i = 0; i < board.length; i++) {
@@ -171,7 +171,7 @@ const winConditionVisual = function (playerMark) {
 };
 
 // #########################################################
-// GAME PLAY INTERFACE INTERACTION
+//* GAME PLAY INTERFACE INTERACTION
 // #########################################################
 boxes.forEach((box) => {
   box.addEventListener("click", (e) => {
