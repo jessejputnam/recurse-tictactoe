@@ -241,7 +241,7 @@ boxes.forEach((box) => {
     board[compChoice[0]][compChoice[1]] = activePlayer.mark;
 
     // update visual to include
-    updateUI();
+    setTimeout(() => updateUI(), 500);
 
     // Check win conditions
     const winner1 = winConditions(activePlayer.mark);
